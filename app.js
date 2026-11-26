@@ -195,7 +195,7 @@
     map = L.map('map', { zoomControl: true }).setView(TAIWAN.c, TAIWAN.z);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     map.createPane('metro').style.zIndex = 450; // 店のピン(600)より下
     metroRenderer = L.svg({ pane: 'metro' });
@@ -237,7 +237,7 @@
     var names = [];
     ((metroData && metroData.features) || []).forEach(function (f) {
       var pr = f.properties || {};
-      if (pr.type === 'line' && codes.indexOf(pr.code) >= 0 && names.indexOf(pr.line) < 0) names.push(pr.line);
+      if (pr.type === 'line' && !pr.branch && codes.indexOf(pr.code) >= 0 && names.indexOf(pr.line) < 0) names.push(pr.line);
     });
     return names;
   }
@@ -273,7 +273,7 @@
     var col = '#888';
     ((metroData && metroData.features) || []).forEach(function (f) {
       var pr = f.properties || {};
-      if (pr.type === 'line' && pr.code === code && pr.color) col = pr.color;
+      if (pr.type === 'line' && pr.code === code && pr.color && !pr.branch) col = pr.color;
     });
     return col;
   }
@@ -417,6 +417,21 @@
   }
 
   // ---------- 起動 ----------
+  // 共有用リンク: #at=西門町（ワープ先の名前）か #at=25.04,121.51,16（緯度,経度,ズーム）で、地図をその場所で開く
+  function openFromHash() {
+    var m = /^#at=(.+)$/.exec(location.hash || '');
+    if (!m) return;
+    var v = decodeURIComponent(m[1]);
+    var ll = /^(-?[\d.]+),(-?[\d.]+)(?:,(\d+))?$/.exec(v);
+    var s = ll ? { lat: +ll[1], lng: +ll[2], zoom: +(ll[3] || 16) }
+      : spots.filter(function (x) { return x.name === v || x.name_zh === v; })[0]
+        || spots.filter(function (x) { return (x.name || '').indexOf(v) >= 0; })[0];
+    if (!s) return;
+    if (state.view !== 'map') showMap(true);
+    if (map) { closeSheet(); map.setView([s.lat, s.lng], +s.zoom || 15); }
+  }
+  window.addEventListener('hashchange', openFromHash);
+
   function init() {
     $('btn-list').onclick = showList;
     $('btn-map').onclick = showMap;
@@ -429,7 +444,7 @@
     $('sel-stars').onchange = function () { state.min = +this.value; render(); };
 
     showState('⏳', '読み込み中…');
-    loadExtra().then(function () {
+    var extraReady = loadExtra().then(function () {
       $('btn-warp').hidden = !spots.length;
       buildMetro();
     });
@@ -445,6 +460,7 @@
       }
       buildFilters();
       render();
+      extraReady.then(openFromHash);
       if (sample) {
         var n = el('div', 'meta', '※ サンプルデータ表示中（data/places.json が無いため）');
         n.style.cssText = 'padding:6px 12px;background:#fff0c2';
