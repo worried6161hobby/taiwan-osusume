@@ -4,22 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffd9e2">
-<title>台湾おすすめマップ</title>
+<title>🧋 ムイムイタピオカマップ</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=202611270830">
 </head>
 <body>
 <header class="top">
-  <h1>🧋 台湾おすすめ</h1>
+  <h1>🧋 ムイムイタピオカマップ</h1>
   <div class="seg" role="tablist" aria-label="表示切替">
     <button id="btn-list" role="tab" aria-selected="true" class="on">一覧</button>
     <button id="btn-map" role="tab" aria-selected="false">地図</button>
+    <button id="btn-guide" role="tab" aria-selected="false" hidden>ガイド</button>
   </div>
 </header>
 
-<section class="filters" aria-label="絞り込み">
+<section class="filters" id="filters" aria-label="絞り込み">
   <input id="q" class="q" type="search" placeholder="🔍 店名・料理・エリア・ひとことで探す" aria-label="キーワード検索" autocomplete="off" enterkeyhint="search">
   <div class="chips" id="chips-cat" aria-label="カテゴリ"></div>
   <div class="chips kinds" id="chips-kind" aria-label="種類" hidden></div>
@@ -41,7 +42,13 @@
   <div id="state" class="state" hidden></div>
   <ul id="list" class="list"></ul>
   <div id="map" class="map" hidden></div>
+  <div id="guide" class="guide" hidden></div>
 </main>
+
+<aside id="spot-story" class="spot-story" hidden aria-live="polite">
+  <button id="spot-story-close" class="spot-story-close" aria-label="閉じる">×</button>
+  <div id="spot-story-body"></div>
+</aside>
 
 <div id="warp-back" class="warp-back" hidden></div>
 <aside id="warp" class="warp-panel" hidden aria-label="ワープ">
@@ -57,6 +64,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=202611270830"></script>
 </body>
 </html>

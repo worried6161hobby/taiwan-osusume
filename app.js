@@ -20,6 +20,8 @@
   var state = { all: [], cat: 'すべて', kind: 'すべて', q: '', area: 'すべて', min: 0, view: 'list', metro: true };
   var map = null, layer = null, markers = {};
   var metroRenderer = null, metroData = null, spots = [], metroGroup = null, metroLayers = [];
+  var spotStories = {}, guideData = null;
+  var METRO_MINZ = 11;
 
   function emoji(cat) { return EMOJI[cat] || '📍'; }
   function iconOf(p) { return p.icon || emoji(p.category); }
@@ -34,6 +36,7 @@
     n = Math.max(0, Math.min(5, Math.round(+n || 0)));
     return '★'.repeat(n) + '☆'.repeat(5 - n);
   }
+  function starCls(n) { return 's' + Math.max(0, Math.min(5, Math.round(+n || 0))); }
   function safeUrl(p) {
     if (p.gmaps_url && /^https?:\/\//i.test(p.gmaps_url)) return p.gmaps_url;
     return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.lat + ',' + p.lng);
@@ -60,7 +63,13 @@
         return x && x.name && typeof x.lat === 'number' && typeof x.lng === 'number';
       });
     }).catch(function () {});
-    return Promise.all([a, b]);
+    var c = fetchJson(BASE + 'spot_stories.json').then(function (d) {
+      if (d && typeof d === 'object' && !Array.isArray(d)) spotStories = d;
+    }).catch(function () {});
+    var g = fetchJson(BASE + 'guide.json').then(function (d) {
+      if (d && Array.isArray(d.sections) && d.sections.length) guideData = d;
+    }).catch(function () {});
+    return Promise.all([a, b, c, g]);
   }
   function normalize(arr) {
     if (!Array.isArray(arr)) throw new Error('not array');
@@ -73,7 +82,7 @@
   function matchQ(p) {
     var q = norm(state.q).trim();
     if (!q) return true;
-    var hay = norm([p.name, p.name_zh, p.kind, p.district, p.comment].join('\n'));
+    var hay = norm([p.name, p.name_zh, p.kind, p.district, p.comment, p.story].join('\n'));
     return q.split(/\s+/).every(function (w) { return hay.indexOf(w) >= 0; });
   }
   function filtered() {
@@ -140,17 +149,25 @@
     body.appendChild(el('p', 'name', p.name));
     if (p.name_zh) body.appendChild(el('div', 'zh', p.name_zh));
     var meta = el('div', 'meta');
-    var st = el('span', 'stars', starStr(p.stars));
+    var st = el('span', 'stars ' + starCls(p.stars), starStr(p.stars));
     meta.appendChild(st);
     if (p.stars_provisional) meta.appendChild(el('span', 'tag prov', '仮'));
     meta.appendChild(document.createTextNode(' '));
     if (p.category) meta.appendChild(el('span', 'tag', p.category));
+    if (p.fav) meta.appendChild(el('span', 'tag fav', '♥ ムイのお気に入り'));
+    if (p.classic) meta.appendChild(el('span', 'tag classic', '定番'));
     if (p.kind) meta.appendChild(el('span', 'tag kind', p.kind));
     if (p.area) meta.appendChild(el('span', 'tag', p.area + (p.district ? '・' + p.district : '')));
     if (p.visited) meta.appendChild(el('span', 'tag visited', '行った'));
     body.appendChild(meta);
     var note = p.comment || p.memo;
     if (note) body.appendChild(el('div', 'memo', note));
+    if (p.story) {
+      var sb = el('div', 'story');
+      sb.appendChild(el('b', null, '🧋 ムイの思い出'));
+      sb.appendChild(document.createTextNode(String(p.story)));
+      body.appendChild(sb);
+    }
     var act = el('div', 'actions');
     var a = el('a', 'btn main', 'Google Maps で開く');
     a.href = safeUrl(p);
@@ -180,12 +197,12 @@
   // ---------- 地図 ----------
   function pinIcon(p) {
     var s = Math.max(1, Math.min(5, Math.round(+p.stars || 1)));
-    var size = 24 + s * 5;
+    var size = { 5: 42, 4: 34, 3: 28, 2: 21, 1: 21 }[s];
     return L.divIcon({
       className: '',
-      html: '<div class="pin s' + s + (p.stars_provisional ? ' prov' : '') +
-        '" style="width:' + size + 'px;height:' + size + 'px;font-size:' + (size * 0.55) + 'px">' +
-        iconOf(p).replace(/[<>&]/g, '') + '</div>',
+      html: '<div class="pin-w" style="font-size:' + (size * 0.55) + 'px"><div class="pin s' + s + (p.stars_provisional ? ' prov' : '') +
+        '">' + iconOf(p).replace(/[<>&]/g, '') + '</div>' +
+        (p.fav ? '<span class="pin-heart">♥</span>' : '') + '</div>',
       iconSize: [size, size],
       iconAnchor: [size / 2, size / 2]
     });
@@ -228,7 +245,7 @@
     };
     ctl.addTo(map);
     map.on('click', closeSheet);
-    map.on('zoomend', updateLabels);
+    map.on('zoomend', function () { applyMetro(); });
     buildMetro();
   }
 
@@ -279,11 +296,12 @@
   }
   function applyMetro() {
     if (!map || !metroGroup) return;
-    if (state.metro) { metroGroup.addTo(map); updateLabels(); }
-    else map.removeLayer(metroGroup);
+    var on = state.metro && map.getZoom() >= METRO_MINZ;
+    if (on) { if (!map.hasLayer(metroGroup)) metroGroup.addTo(map); updateLabels(); }
+    else if (map.hasLayer(metroGroup)) map.removeLayer(metroGroup);
   }
   function updateLabels() {
-    if (!map || !state.metro) return;
+    if (!map || !state.metro || map.getZoom() < METRO_MINZ) return;
     var show = map.getZoom() >= 13;
     metroLayers.forEach(function (m) {
       if (show) m.openTooltip(); else m.closeTooltip();
@@ -320,7 +338,19 @@
     closeSheet();
     map.stop();
     map.flyTo([s.lat, s.lng], +s.zoom || 15, { duration: 1.2 });
+    showSpotStory(s);
   }
+  // ---------- 土地の思い出 ----------
+  function showSpotStory(s) {
+    var arr = s && spotStories[s.name];
+    if (!Array.isArray(arr) || !arr.length) { closeSpotStory(); return; }
+    var b = $('spot-story-body');
+    b.textContent = '';
+    b.appendChild(el('h3', null, '🧋 ムイの思い出 — ' + s.name));
+    arr.forEach(function (t) { b.appendChild(el('p', null, String(t))); });
+    $('spot-story').hidden = false;
+  }
+  function closeSpotStory() { $('spot-story').hidden = true; }
   function renderMarkers(items) {
     if (!map) return;
     layer.clearLayers();
@@ -357,19 +387,25 @@
   function closeSheet() { $('sheet').hidden = true; }
 
   // ---------- 表示切替 ----------
+  function setTab(v) {
+    state.view = v;
+    ['list', 'map', 'guide'].forEach(function (k) {
+      var on = k === v;
+      $(k).hidden = !on;
+      $('btn-' + k).classList.toggle('on', on);
+      $('btn-' + k).setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    $('filters').hidden = v === 'guide';
+    if (v === 'guide') hideState();
+    if (v !== 'map') closeSpotStory();
+  }
   function showList() {
-    state.view = 'list';
-    $('list').hidden = false; $('map').hidden = true;
-    $('btn-list').classList.add('on'); $('btn-map').classList.remove('on');
-    $('btn-list').setAttribute('aria-selected', 'true'); $('btn-map').setAttribute('aria-selected', 'false');
+    setTab('list');
     closeSheet();
     render();
   }
   function showMap(noFit) {
-    state.view = 'map';
-    $('list').hidden = true; $('map').hidden = false;
-    $('btn-map').classList.add('on'); $('btn-list').classList.remove('on');
-    $('btn-map').setAttribute('aria-selected', 'true'); $('btn-list').setAttribute('aria-selected', 'false');
+    setTab('map');
     if (typeof L === 'undefined') {
       showState('🗺️', '地図ライブラリを読み込めませんでした。ネット接続を確認してください。', '一覧に戻る', showList);
       return;
@@ -377,6 +413,84 @@
     initMap();
     map.invalidateSize();
     render(noFit === true ? false : true);
+  }
+  function showGuide() {
+    if (!guideData) return;
+    setTab('guide');
+    closeSheet();
+    renderGuide();
+  }
+
+  // ---------- ガイド ----------
+  var GKEY = 'muimui-guide-done';
+  function loadDone() {
+    try { return JSON.parse(localStorage.getItem(GKEY) || '{}') || {}; } catch (e) { return {}; }
+  }
+  function saveDone(d) { try { localStorage.setItem(GKEY, JSON.stringify(d)); } catch (e) {} }
+  function renderGuide() {
+    var g = $('guide');
+    var open = {};
+    [].forEach.call(g.querySelectorAll('details'), function (d) { open[d.dataset.id] = d.open; });
+    g.textContent = '';
+    if (!guideData) return;
+    var done = loadDone();
+    if (guideData.updated) g.appendChild(el('p', 'g-updated', '最終確認: ' + guideData.updated));
+    guideData.sections.forEach(function (sec, si) {
+      var id = String(sec.id || si);
+      var det = el('details', 'g-sec');
+      det.dataset.id = id;
+      if (open[id]) det.open = true;
+      var sum = el('summary');
+      sum.appendChild(document.createTextNode((sec.icon ? sec.icon + ' ' : '') + (sec.title || '')));
+      var prog = el('span', 'g-prog');
+      sum.appendChild(prog);
+      det.appendChild(sum);
+      var body = el('div', 'g-body');
+      if (sec.intro) body.appendChild(el('p', 'g-intro', sec.intro));
+      var items = Array.isArray(sec.items) ? sec.items : [];
+      var boxes = [];
+      function upd() {
+        var n = boxes.filter(function (x) { return x.checked; }).length;
+        prog.textContent = items.length ? n + '/' + items.length : '';
+      }
+      items.forEach(function (it) {
+        var key = id + '|' + it.text;
+        var row = el('label', 'g-item' + (done[key] ? ' done' : ''));
+        var cb = el('input');
+        cb.type = 'checkbox';
+        cb.checked = !!done[key];
+        cb.onchange = function () {
+          var d = loadDone();
+          if (cb.checked) d[key] = 1; else delete d[key];
+          saveDone(d);
+          row.classList.toggle('done', cb.checked);
+          upd();
+        };
+        boxes.push(cb);
+        row.appendChild(cb);
+        var tx = el('div');
+        tx.appendChild(el('div', 'g-text', it.text || ''));
+        if (it.detail) tx.appendChild(el('div', 'g-detail', it.detail));
+        if (Array.isArray(it.tags) && it.tags.length) {
+          var tg = el('div', 'g-tags');
+          it.tags.forEach(function (t) { tg.appendChild(el('span', 'tag', t)); });
+          tx.appendChild(tg);
+        }
+        if (it.source && /^https?:\/\//i.test(it.source)) {
+          var sr = el('div', 'g-src');
+          var a = el('a', null, '出典: ' + (it.source_title || it.source));
+          a.href = it.source; a.target = '_blank'; a.rel = 'noopener noreferrer';
+          a.onclick = function (e) { e.stopPropagation(); };
+          sr.appendChild(a);
+          tx.appendChild(sr);
+        }
+        row.appendChild(tx);
+        body.appendChild(row);
+      });
+      upd();
+      det.appendChild(body);
+      g.appendChild(det);
+    });
   }
 
   // ---------- 状態表示 ----------
@@ -419,6 +533,7 @@
   // ---------- 起動 ----------
   // 共有用リンク: #at=西門町（ワープ先の名前）か #at=25.04,121.51,16（緯度,経度,ズーム）で、地図をその場所で開く
   function openFromHash() {
+    if (location.hash === '#guide') { showGuide(); return; }
     var m = /^#at=(.+)$/.exec(location.hash || '');
     if (!m) return;
     var v = decodeURIComponent(m[1]);
@@ -429,12 +544,15 @@
     if (!s) return;
     if (state.view !== 'map') showMap(true);
     if (map) { closeSheet(); map.setView([s.lat, s.lng], +s.zoom || 15); }
+    if (s.name) showSpotStory(s);
   }
   window.addEventListener('hashchange', openFromHash);
 
   function init() {
     $('btn-list').onclick = showList;
     $('btn-map').onclick = showMap;
+    $('btn-guide').onclick = showGuide;
+    $('spot-story-close').onclick = closeSpotStory;
     $('sheet-close').onclick = closeSheet;
     $('btn-warp').onclick = openWarp;
     $('warp-close').onclick = closeWarp;
@@ -446,6 +564,7 @@
     showState('⏳', '読み込み中…');
     var extraReady = loadExtra().then(function () {
       $('btn-warp').hidden = !spots.length;
+      $('btn-guide').hidden = !guideData;
       buildMetro();
     });
     load().then(function (d) {
