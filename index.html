@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffd9e2">
+<title>台湾おすすめマップ</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>🧋 台湾おすすめ</h1>
+  <div class="seg" role="tablist" aria-label="表示切替">
+    <button id="btn-list" role="tab" aria-selected="true" class="on">一覧</button>
+    <button id="btn-map" role="tab" aria-selected="false">地図</button>
+  </div>
+</header>
+
+<section class="filters" aria-label="絞り込み">
+  <input id="q" class="q" type="search" placeholder="🔍 店名・料理・エリア・ひとことで探す" aria-label="キーワード検索" autocomplete="off" enterkeyhint="search">
+  <div class="chips" id="chips-cat" aria-label="カテゴリ"></div>
+  <div class="chips kinds" id="chips-kind" aria-label="種類" hidden></div>
+  <div class="row">
+    <select id="sel-area" aria-label="エリア"></select>
+    <select id="sel-stars" aria-label="おすすめ度の下限">
+      <option value="0">★ すべて</option>
+      <option value="2">★2以上</option>
+      <option value="3">★3以上</option>
+      <option value="4">★4以上</option>
+      <option value="5">★5のみ</option>
+    </select>
+    <button id="btn-warp" class="btn warp" hidden>🚀 ワープ</button>
+    <span id="count" class="count"></span>
+  </div>
+</section>
+
+<main>
+  <div id="state" class="state" hidden></div>
+  <ul id="list" class="list"></ul>
+  <div id="map" class="map" hidden></div>
+</main>
+
+<div id="warp-back" class="warp-back" hidden></div>
+<aside id="warp" class="warp-panel" hidden aria-label="ワープ">
+  <button id="warp-close" class="sheet-close" aria-label="閉じる">×</button>
+  <h2>🚀 ワープ</h2>
+  <div id="warp-body"></div>
+</aside>
+
+<aside id="sheet" class="sheet" hidden aria-live="polite">
+  <button id="sheet-close" class="sheet-close" aria-label="閉じる">×</button>
+  <div id="sheet-body"></div>
+</aside>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

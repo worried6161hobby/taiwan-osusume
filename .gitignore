@@ -1,0 +1,11 @@
+_shot/
+_server.log
+data/places.unverified.json
+data/REPORT.md
+data/README_stars.md
+data/_work/
+.DS_Store
+data/places.private.json
+_dev/
+data/README_kinds.md
+_work_metro/

@@ -1,0 +1,83 @@
+:root{--pink:#ffd9e2;--pink-d:#ff8fab;--mint:#d8f3e6;--cream:#fff8f0;--ink:#4a3b40;--sub:#8c7b80;--gold:#f5b301}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--cream);color:var(--ink);display:flex;flex-direction:column;max-width:760px;margin:0 auto;box-shadow:0 0 0 1px #f3e6e0}
+.top{display:flex;align-items:center;justify-content:space-between;padding:calc(10px + env(safe-area-inset-top)) 14px 8px;background:var(--pink)}
+.top h1{font-size:18px;margin:0}
+.seg{display:flex;background:#fff;border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;padding:8px 16px;border-radius:999px;font-size:14px;color:var(--sub);min-height:36px}
+.seg button.on{background:var(--pink-d);color:#fff;font-weight:600}
+.filters{padding:8px 12px;background:#fff;border-bottom:1px solid #f3e6e0}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid #f0cfd7;background:#fff;color:var(--ink);border-radius:999px;padding:7px 12px;font-size:13px;min-height:34px}
+.chip.on{background:var(--pink-d);border-color:var(--pink-d);color:#fff}
+.row{display:flex;gap:8px;align-items:center}
+select{font-size:14px;padding:8px;border-radius:10px;border:1px solid #f0cfd7;background:#fff;color:var(--ink);min-height:38px}
+.count{margin-left:auto;font-size:12px;color:var(--sub)}
+main{flex:1;position:relative;min-height:0;display:flex;flex-direction:column}
+.list{list-style:none;margin:0;padding:10px 12px calc(20px + env(safe-area-inset-bottom));overflow-y:auto;flex:1}
+.card{background:#fff;border-radius:16px;padding:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(255,143,171,.15);display:flex;gap:12px}
+.card .emo{font-size:26px;flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--pink);border-radius:50%}
+.card .body{flex:1;min-width:0}
+.name{font-weight:700;font-size:16px;margin:0}
+.zh{font-size:12px;color:var(--sub)}
+.meta{font-size:12px;color:var(--sub);margin:4px 0}
+.stars{color:var(--gold);letter-spacing:1px}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--mint);margin-right:4px;color:var(--ink)}
+.tag.prov{background:#fff0c2}
+.tag.visited{background:#e3e8ff}
+.memo{font-size:13px;margin:6px 0}
+.actions{display:flex;gap:8px;margin-top:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border-radius:999px;border:0;font-size:13px;text-decoration:none;background:var(--pink);color:var(--ink)}
+.btn.main{background:var(--pink-d);color:#fff;font-weight:600}
+.map{flex:1;min-height:300px;width:100%}
+.map[hidden],.list[hidden],.state[hidden],.sheet[hidden]{display:none}
+.leaflet-tile-pane{filter:saturate(1.3) sepia(.12) hue-rotate(-20deg) brightness(1.03)}
+.pin{display:flex;align-items:center;justify-content:center;border-radius:50%;background:#fff;border:3px solid var(--pink-d);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.pin.s5{border-color:#f5b301}.pin.s4{border-color:#ff8fab}.pin.s3{border-color:#9bd4b5}.pin.s2,.pin.s1{border-color:#bbb}
+.pin.prov{border-style:dashed}
+.state{padding:40px 20px;text-align:center;color:var(--sub)}
+.state .big{font-size:44px}
+.state button{margin-top:12px}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-width:760px;margin:0 auto;background:#fff;border-radius:22px 22px 0 0;padding:16px 16px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(0,0,0,.18);z-index:1000;animation:up .22s ease-out}
+.sheet-close{position:absolute;right:10px;top:8px;border:0;background:var(--pink);width:36px;height:36px;border-radius:50%;font-size:20px}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+/* はみ出し対策（2026-11-27） */
+html,body{width:100%;overflow-x:hidden}
+body>*{min-width:0;max-width:100%}
+main,.list,.card,.filters,.row{min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.tag{margin-right:0}
+.memo,.name,.zh{overflow-wrap:anywhere;word-break:break-word}
+.row select{flex:1 1 0;min-width:0}
+.count{flex:none}
+.top h1{white-space:nowrap}
+.actions{flex-wrap:wrap}
+/* 地図をパステル寄りに（OSM 標準タイルを淡く） */
+.leaflet-tile-pane{filter:saturate(.75) brightness(1.06) sepia(.15) hue-rotate(-12deg)}
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:rgba(255,143,171,.35)}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:#ff8fab;color:#fff;font-weight:700}
+
+/* 検索・種類チップ・ワープ・メトロ（2026-11-27） */
+.q{width:100%;font-size:16px;padding:9px 12px;border-radius:999px;border:1px solid #f0cfd7;background:#fff;color:var(--ink);margin-bottom:6px;min-height:40px;-webkit-appearance:none}
+.chips[hidden]{display:none}
+.chip.sub{background:var(--mint);border-color:#bfe6d3;font-size:12px;min-height:30px;padding:5px 10px}
+.chip.sub.on{background:#4fb286;border-color:#4fb286;color:#fff}
+.tag.kind{background:#ffe9c7}
+.btn.warp{flex:none;min-height:38px;padding:0 12px;background:#e3e8ff;font-weight:600}
+.btn.warp[hidden]{display:none}
+.warp-back{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:1090}
+.warp-back[hidden],.warp-panel[hidden]{display:none}
+.warp-panel{position:fixed;left:0;right:0;bottom:0;max-width:760px;margin:0 auto;max-height:70vh;overflow-y:auto;background:#fff;border-radius:22px 22px 0 0;padding:16px 16px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(0,0,0,.18);z-index:1100;animation:up .22s ease-out}
+.warp-panel h2{font-size:16px;margin:0 0 8px}
+.warp-g{font-size:12px;color:var(--sub);margin:12px 0 6px;font-weight:700}
+.warp-row{display:flex;flex-wrap:wrap;gap:6px}
+.warp-chip{background:var(--pink)}
+.metro-toggle{opacity:.55}
+.metro-toggle.on{opacity:1;background:#e3e8ff !important;font-weight:700}
+.st-label{background:rgba(255,255,255,.85);border:0;box-shadow:none;padding:0 3px;font-size:11px;font-weight:600;color:#333;pointer-events:none}
+.st-label:before{display:none}
+.st-pop{font-size:12px;line-height:1.4}
+.st-lines{color:var(--sub)}
+.st-popup .leaflet-popup-content{margin:8px 12px}
