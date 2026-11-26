@@ -1,0 +1,553 @@
+{
+ "updated": "2026-11-27",
+ "sections": [
+  {
+   "id": "before",
+   "title": "出発前にやること",
+   "icon": "🧳",
+   "intro": "入国前に済ませること。制度は変わるので出発前に公式で再確認する。",
+   "items": [
+    {
+     "text": "日本人は観光なら90日以内ビザ不要",
+     "detail": "到着日の翌日0時から数える。許可期間を超えるとオーバーステイで罰金や退去強制の対象になる。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "ビザ"
+     ]
+    },
+    {
+     "text": "パスポート残存は滞在予定日数以上あればよい",
+     "detail": "一般には6か月以上が必要とされるが、日本旅券は「予定滞在日数以上」でも可とされる。航空会社の確認も受ける。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "パスポート"
+     ]
+    },
+    {
+     "text": "帰りの航空券（予約済み）が要る",
+     "detail": "帰国用または次の目的地への航空券の提示が必要。無いと日本で搭乗を断られることがある。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "航空券"
+     ]
+    },
+    {
+     "text": "入国カードはオンライン(TWAC)で事前登録",
+     "detail": "2025年10月1日から紙は廃止。無料。公式サイト twac.immigration.gov.tw から登録する。",
+     "source": "https://www.roc-taiwan.org/jpfuk_ja/post/17456.html",
+     "source_title": "台北駐大阪経済文化弁事処福岡分処「TWAC（オンライン入国カード）」",
+     "tags": [
+      "入国カード"
+     ]
+    },
+    {
+     "text": "TWAC は入国7日前から登録できる",
+     "detail": "福岡分処ページ（2026.6.16更新）は7日前から。外務省ページ・移民署の旧発表は3日前で食い違う。直前に公式で確認。",
+     "source": "https://www.roc-taiwan.org/jpfuk_ja/post/17456.html",
+     "source_title": "台北駐大阪経済文化弁事処福岡分処「TWAC（オンライン入国カード）」",
+     "tags": [
+      "入国カード"
+     ]
+    },
+    {
+     "text": "TWAC は偽サイトに注意（手数料詐欺あり）",
+     "detail": "日本人が偽サイトで手数料を取られる被害が出ている。必ず移民署の公式サイトから登録する。",
+     "source": "https://www.anzen.mofa.go.jp/m/mbimmigration_008.html",
+     "source_title": "外務省 海外安全情報 台湾（査証・出入国審査・通関）",
+     "tags": [
+      "詐欺"
+     ]
+    },
+    {
+     "text": "海外旅行保険に入る",
+     "detail": "病気・ケガ・盗難で多額の出費になる例が多い。外務省は加入を勧めている。",
+     "source": "https://www.anzen.mofa.go.jp/c_info/hoken.html",
+     "source_title": "外務省 海外安全ホームページ 海外旅行保険加入のおすすめ",
+     "tags": [
+      "保険"
+     ]
+    },
+    {
+     "text": "「たびレジ」に登録しておく",
+     "detail": "3か月未満の短期渡航者向け。現地の安全情報がメールで届き、災害時の安否確認にも使われる。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "安全"
+     ]
+    },
+    {
+     "text": "スマホは VoLTE 対応か確認する",
+     "detail": "台湾は2024年6月に3Gを停止。VoLTE非対応だと110・119などの緊急通報ができない恐れがある。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "通信"
+     ]
+    },
+    {
+     "text": "両替は出発前に準備しておくと安心",
+     "detail": "郊外・地方は両替がやや不便。紙幣は100・200・500・1000・2000元の5種。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "お金"
+     ]
+    },
+    {
+     "text": "Google マップのオフライン地図は国により不可",
+     "detail": "契約上の制限などで一部の国・地域はダウンロード不可。台湾で保存できるか出発前に試す。",
+     "source": "https://support.google.com/maps/answer/6291838?hl=ja",
+     "source_title": "Google マップ ヘルプ「オフラインでナビを使う」",
+     "tags": [
+      "地図"
+     ]
+    },
+    {
+     "text": "悠遊カードはコンビニ・MRT駅で買える",
+     "detail": "普通卡は120元（残高は別）。7-ELEVEN・全家・萊爾富・OK、MRT各駅の旅客詢問処など。",
+     "source": "https://www.easycard.com.tw/easycard?cls=1515395053&id=1507272299",
+     "source_title": "悠遊カード公式「普通卡」",
+     "tags": [
+      "交通"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "items",
+   "title": "持ち物",
+   "icon": "🎒",
+   "intro": "確認できた範囲のみ。",
+   "items": [
+    {
+     "text": "電圧は110V・60Hz（日本は100V）",
+     "detail": "日本と違うのでアダプターを使う。電池式の機器を持つと安心と案内されている。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "電源"
+     ]
+    },
+    {
+     "text": "常備薬は自用の範囲で。市販薬は1種12個・計36個まで",
+     "detail": "台湾食藥署の限量。販売は不可。処方薬・管制薬品は診断書や処方箋の写しなどが要る。",
+     "source": "https://www.fda.gov.tw/TC/newsContent.aspx?cid=4&id=t623657",
+     "source_title": "台湾 衛生福利部食藥署「入境攜帶食藥醫粧限自用」",
+     "tags": [
+      "薬"
+     ]
+    },
+    {
+     "text": "パスポートは紛失に注意（再発行は大変）",
+     "detail": "夜市・九份など混雑地で紛失する例。再発行には戸籍謄本が要るなど手間がかかる。コピーも控えておく。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "パスポート"
+     ]
+    },
+    {
+     "text": "蚊対策に虫よけ剤・肌を出しすぎない服",
+     "detail": "デング熱は蚊が媒介する。蚊の多い屋外では肌を露出せず虫よけ剤を使うよう案内されている。",
+     "source": "https://www.forth.go.jp/useful/infectious/name/name33.html",
+     "source_title": "厚生労働省検疫所 FORTH「デング熱」",
+     "tags": [
+      "健康"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "arrival",
+   "title": "入国・空港",
+   "icon": "🛬",
+   "intro": "入国審査と税関。肉製品・電子たばこは特に注意。",
+   "items": [
+    {
+     "text": "入国審査で指紋と顔写真を取られる（14歳以上）",
+     "detail": "外国人は入出境審査時に個人識別情報の提供が必要。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "入国審査"
+     ]
+    },
+    {
+     "text": "税関：申告なしは緑、申告ありは赤のカウンター",
+     "detail": "規制品や免税超過品があれば「海関申報單」を書き、赤(應申報台)で申告して検査を受ける。",
+     "source": "https://www.anzen.mofa.go.jp/m/mbimmigration_008.html",
+     "source_title": "外務省 海外安全情報 台湾（査証・出入国審査・通関）",
+     "tags": [
+      "税関"
+     ]
+    },
+    {
+     "text": "肉製品の持ち込みは禁止。罰金1万〜100万元",
+     "detail": "真空パックも対象。動物傳染病防治條例により処罰。関務署の2026-02-03発布ページ。",
+     "source": "https://web.customs.gov.tw/taichung/singlehtml/3148",
+     "source_title": "台湾 財政部関務署 台中関「旅客通関」",
+     "tags": [
+      "税関",
+      "肉製品"
+     ]
+    },
+    {
+     "text": "豚肉製品は初回でも20万元・未納なら入国拒否",
+     "detail": "アフリカ豚熱の疫区産の例。外国人は罰金未納だと入国を拒否され得る（2024年6月発表）。",
+     "source": "https://www.moa.gov.tw/ws.php?id=2515537",
+     "source_title": "台湾 農業部（関務署発表の転載）",
+     "tags": [
+      "税関",
+      "肉製品"
+     ]
+    },
+    {
+     "text": "生鮮果物・電子たばこは持ち込み不可",
+     "detail": "動植物とその生鮮産品（生鮮果実を含む）は条件を満たさない限り不可。電子たばこは全面禁止。",
+     "source": "https://www.anzen.mofa.go.jp/m/mbimmigration_008.html",
+     "source_title": "外務省 海外安全情報 台湾（査証・出入国審査・通関）",
+     "tags": [
+      "税関"
+     ]
+    },
+    {
+     "text": "免税範囲：酒1.5L・紙巻200本（20歳以上）・物品3.5万元",
+     "detail": "酒は18歳以上。物品は課税価格の総額3.5万元以下。超えたら赤のカウンターで申告。",
+     "source": "https://www.anzen.mofa.go.jp/m/mbimmigration_008.html",
+     "source_title": "外務省 海外安全情報 台湾（査証・出入国審査・通関）",
+     "tags": [
+      "税関",
+      "免税"
+     ]
+    },
+    {
+     "text": "酒の免税は2025年1月25日から1.5Lに引き上げ",
+     "detail": "以前は1L。台北関の旧ページは1Lのままで食い違う。新しい値は財政部発表に拠る。",
+     "source": "https://culture.tainan.gov.tw/df_ufiles/215/財政部提高入境旅客攜帶自用及家用行李物品免稅額與自用酒類免稅上限.pdf",
+     "source_title": "台湾 行政院消費者保護会（財政部発表）免税額・酒類免税上限の引き上げ",
+     "tags": [
+      "税関",
+      "免税"
+     ]
+    },
+    {
+     "text": "現金は1万米ドル超・10万台湾元超で申告",
+     "detail": "未申告だと超過分が没収される。台湾元は入境時の超過分は税関に預ける扱い。",
+     "source": "https://www.anzen.mofa.go.jp/m/mbimmigration_008.html",
+     "source_title": "外務省 海外安全情報 台湾（査証・出入国審査・通関）",
+     "tags": [
+      "税関",
+      "現金"
+     ]
+    },
+    {
+     "text": "空港MRT直達車は5駅のみ停車",
+     "detail": "直達車は台北駅(A1)・A3・A8・A12(第1)・A13(第2)に停車。所要時間・運賃は公式で要確認。",
+     "source": "https://www.tymetro.com.tw/tymetro-new/en/_pages/travel-guide/timetable.php/1000",
+     "source_title": "桃園捷運 Passenger Guide（台北駅）",
+     "tags": [
+      "空港",
+      "桃園"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "inside",
+   "title": "台湾の中での注意",
+   "icon": "🚇",
+   "intro": "マナー・安全・緊急時。",
+   "items": [
+    {
+     "text": "MRTは改札内の黄線の内側で飲食禁止",
+     "detail": "水も不可。違反は1,500〜7,500元の罰金。黄線の外は可（ゴミ捨ては不可）。",
+     "source": "https://www.metro.taipei/News_Content.aspx?n=566DA580861CEE77&sms=87415A8B9CE81B16&s=CBB430D2363C29FC",
+     "source_title": "台北捷運公司 Q&A「捷運系統内旅客禁止飲食規定」",
+     "tags": [
+      "MRT",
+      "罰金"
+     ]
+    },
+    {
+     "text": "MRTはガム・ビンロウも禁止",
+     "detail": "禁止飲食区でのガム・ビンロウ・唾吐きなども第50条の罰金対象（1,500〜7,500元）。",
+     "source": "https://web.metro.taipei/QRCode/Regulations%20for%20Use%20of%20the%20Taipei%20Metro%20System-English.pdf",
+     "source_title": "台北捷運 Regulations for Use of the Taipei Metro System",
+     "tags": [
+      "MRT",
+      "罰金"
+     ]
+    },
+    {
+     "text": "エスカレーターは右側に立つ。歩かない",
+     "detail": "右側に立ち、スマホを見ながら歩かない。MRT規則も走る行為を禁止。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "マナー",
+      "MRT"
+     ]
+    },
+    {
+     "text": "ほとんどの場所が禁煙。違反は罰金",
+     "detail": "施設内・公共空間は原則全面禁煙。喫煙者に罰金が科されることがある。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "喫煙"
+     ]
+    },
+    {
+     "text": "交通：車・バイクは歩行者より優先されがち",
+     "detail": "青信号でも周囲を確認。歩道にバイクが停まる・走ることがある。事故件数は日本より多い。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "交通"
+     ]
+    },
+    {
+     "text": "路地・横断はバイクの飛び出しに注意",
+     "detail": "路地から一時停止せず飛び出す車・バイクがある。信号待ちは車道から少し離れる。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "交通"
+     ]
+    },
+    {
+     "text": "水道水は沸かしてから飲む",
+     "detail": "そのままでは飲めない。飲水器が各所にある。歯みがき・洗顔は水道水でよい。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "水"
+     ]
+    },
+    {
+     "text": "レストランなどは10%のサービス料が加算される",
+     "detail": "ホテルやレストランでは精算時に10%が加算されると案内されている。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "お金"
+     ]
+    },
+    {
+     "text": "スリ・置き引き：夜市や観光地で多い",
+     "detail": "バッグは体の前で持つ。カードは分散。飲酒して路上で寝ると盗難に遭う例もある。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "治安"
+     ]
+    },
+    {
+     "text": "タクシーは遠回り・不当請求に注意",
+     "detail": "メーター操作や遠回りの例。降車時にレシートをもらい、車両番号を控える。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "治安",
+      "タクシー"
+     ]
+    },
+    {
+     "text": "地震は多い。揺れたら安全な場所へ。海沿いなら高台へ",
+     "detail": "大きな揺れの後は津波を警戒する。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "災害"
+     ]
+    },
+    {
+     "text": "台風は7〜9月が中心。休業になることもある",
+     "detail": "通年来る可能性あり。各市県が「停班停課」を出すと観光施設も休む恐れ。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "災害"
+     ]
+    },
+    {
+     "text": "緊急：警察110・救急119",
+     "detail": "詐欺ホットライン165。台北市の外国人専用は 02-2556-6007（24時間・英語）。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "緊急"
+     ]
+    },
+    {
+     "text": "日本台湾交流協会 台北事務所 02-2713-8000",
+     "detail": "時間外・土日祝は緊急電話代行が24時間対応。高雄事務所は 07-771-4008。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "緊急"
+     ]
+    },
+    {
+     "text": "軍事施設・空港の撮影は禁止（空港内も要注意）",
+     "detail": "軍民共用の空港あり。機内から空港施設を撮るのも控える。",
+     "source": "https://www.anzen.mofa.go.jp/info/pcsafetymeasure_008.html",
+     "source_title": "外務省 海外安全ホームページ 台湾 安全対策基礎データ",
+     "tags": [
+      "マナー"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "money",
+   "title": "お金と支払い",
+   "icon": "💴",
+   "intro": "支払い手段は確認できた範囲のみ。",
+   "items": [
+    {
+     "text": "通貨は台湾ドル。紙幣5種・硬貨5種",
+     "detail": "紙幣100〜2000元、硬貨1・5・10・20・50元。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "現金"
+     ]
+    },
+    {
+     "text": "両替は都市部の銀行・ホテル・百貨店で可",
+     "detail": "地方は不便。大きな金額は出発前に用意しておく。",
+     "source": "https://jp.taiwan.net.tw/m1.aspx?sNo=0003064",
+     "source_title": "交通部観光署（台湾観光局）実用的な情報",
+     "tags": [
+      "両替"
+     ]
+    },
+    {
+     "text": "悠遊カードの上限は1万元",
+     "detail": "記名しないカードは紛失しても補償がない。不要なら解約して残高返金の手続きができる。",
+     "source": "https://www.easycard.com.tw/easycard?cls=1515395053&id=1507272299",
+     "source_title": "悠遊カード公式「普通卡」",
+     "tags": [
+      "交通",
+      "悠遊カード"
+     ]
+    },
+    {
+     "text": "免税還付：同一日・同一店で2,000元以上",
+     "detail": "90日以内に台湾から持ち出す。出国前に申請する。対象店のみ。",
+     "source": "https://www.mof.gov.tw/eng/singlehtml/f48d641f159a4866b1d31c0916fbcc71?cntId=32bc7af09c4840d1a781991c4f753851",
+     "source_title": "台湾 財政部 Tax Refund for Foreign Tourists",
+     "tags": [
+      "還付"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "return",
+   "title": "帰国時・税関",
+   "icon": "🛫",
+   "intro": "日本の税関と検疫。",
+   "items": [
+    {
+     "text": "免税範囲：酒3本(760ml)・紙巻200本・香水2オンス",
+     "detail": "20歳未満は酒・たばこは免税なし。その他は海外市価の合計20万円まで。",
+     "source": "https://www.customs.go.jp/kaigairyoko/menzei.htm",
+     "source_title": "税関（日本）海外旅行者の免税範囲",
+     "tags": [
+      "税関",
+      "免税"
+     ]
+    },
+    {
+     "text": "加熱式たばこは個装等10個まで",
+     "detail": "IQOS・gloは200本、withは50個の扱い。種類で数え方が違う。",
+     "source": "https://www.customs.go.jp/kaigairyoko/menzei.htm",
+     "source_title": "税関（日本）海外旅行者の免税範囲",
+     "tags": [
+      "税関",
+      "たばこ"
+     ]
+    },
+    {
+     "text": "1品目1万円以下は免税（20万円の枠に入れない）",
+     "detail": "1個で20万円超の品は全額課税（25万円のバッグは25万円全額）。",
+     "source": "https://www.customs.go.jp/kaigairyoko/menzei.htm",
+     "source_title": "税関（日本）海外旅行者の免税範囲",
+     "tags": [
+      "税関"
+     ]
+    },
+    {
+     "text": "肉製品はほぼ持ち込めない（ハム・ソーセージ・肉まん等）",
+     "detail": "検査証明書のないものは不可。違反は3年以下の拘禁刑または300万円以下の罰金。",
+     "source": "https://www.maff.go.jp/aqs/tetuzuki/product/aq2.html",
+     "source_title": "農林水産省 動物検疫所「肉製品などのおみやげについて」",
+     "tags": [
+      "検疫",
+      "肉製品"
+     ]
+    },
+    {
+     "text": "肉製品は動物検疫カウンターで検査を受ける",
+     "detail": "持ち込める製品でも、検査前に開封すると持ち込めなくなる。",
+     "source": "https://www.maff.go.jp/aqs/tetuzuki/product/aq2.html",
+     "source_title": "農林水産省 動物検疫所「肉製品などのおみやげについて」",
+     "tags": [
+      "検疫"
+     ]
+    },
+    {
+     "text": "果物・野菜の多くは持ち込み禁止",
+     "detail": "お土産でも少量でも規制対象。植物は植物検疫カウンターで検査を受ける。",
+     "source": "https://www.maff.go.jp/pps/j/trip/keikouhin.html",
+     "source_title": "農林水産省 植物防疫所「旅行者（携行品）」",
+     "tags": [
+      "検疫",
+      "果物"
+     ]
+    },
+    {
+     "text": "Visit Japan Web で税関申告を事前登録",
+     "detail": "QRコードで電子申告ゲートが使える。登録は入国前に。",
+     "source": "https://www.customs.go.jp/kaigairyoko/egate.htm",
+     "source_title": "税関（日本）電子申告ゲート・Visit Japan Web",
+     "tags": [
+      "税関"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "after",
+   "title": "帰国後にやること",
+   "icon": "🏠",
+   "intro": "必要最小限のみ。",
+   "items": [
+    {
+     "text": "別送品は帰国後6か月以内に輸入するものが免税の枠に入る",
+     "detail": "携帯品と別送品は合算して20万円で判定する。",
+     "source": "https://www.customs.go.jp/kaigairyoko/menzei.htm",
+     "source_title": "税関（日本）海外旅行者の免税範囲",
+     "tags": [
+      "税関"
+     ]
+    },
+    {
+     "text": "デング熱は蚊が媒介。屋外では虫よけを",
+     "detail": "感染者から人への直接感染はない。蚊に刺されないよう注意するのが基本と案内されている。",
+     "source": "https://www.forth.go.jp/useful/infectious/name/name33.html",
+     "source_title": "厚生労働省検疫所 FORTH「デング熱」",
+     "tags": [
+      "健康"
+     ]
+    }
+   ]
+  }
+ ]
+}
